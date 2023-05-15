@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+// libraries
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+
+// style
 import './App.css';
+
+// pages
+import StateCounterPage from './Page/StateCounterPage';
+import StateInputValuePage from './Page/StateInputValuePage';
+import StateShowTextPage from './Page/StateShowTextPage';
+import StateChangeColorPage from './Page/StateChangeColorPage';
+import ExercisePage from './Page/ExercisePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="navigation">
+        <Link to='/'>State Counter</Link>
+        <Link to='/inputValue'>State Input Value</Link>
+        <Link to='/showText'>State Show Text</Link>
+        <Link to='/changeColor'>State Change Color</Link>
+        <Link to='/exercise'>Exercise</Link>
+      </div>
+
+      <Routes>
+        <Route path='/' exact element={<StateCounterPage />}/>
+        <Route path='/inputValue' exact element={<StateInputValuePage />}/>
+        <Route path='/showText' exact element={<StateShowTextPage />}/>
+        <Route path='/changeColor' exact element={<StateChangeColorPage />}/>
+        <Route path='/exercise' exact element={<ExercisePage />}/>
+      </Routes>
+    </Router>
   );
 }
 
